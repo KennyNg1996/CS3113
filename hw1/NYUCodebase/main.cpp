@@ -40,7 +40,7 @@ GLuint LoadTexture(const char *filePath) {
 int main(int argc, char *argv[])
 {
 	SDL_Init(SDL_INIT_VIDEO);
-	displayWindow = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 360, SDL_WINDOW_OPENGL);
+	displayWindow = SDL_CreateWindow("HW1 - Kenny Ng", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 360, SDL_WINDOW_OPENGL);
 	SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
 	SDL_GL_MakeCurrent(displayWindow, context);
 	#ifdef _WINDOWS
@@ -74,15 +74,18 @@ int main(int argc, char *argv[])
 			program.setModelMatrix(modelMatrix);
 			program.setProjectionMatrix(projectionMatrix);
 			program.setViewMatrix(viewMatrix);
-			glBindTexture(GL_TEXTURE_2D, fireTexture);
 
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+			modelMatrix.identity();
 			program.setModelMatrix(modelMatrix);
 
-			float fireVertices[] = { 2.0f, 2.0f, 0.0f, 2.0f, 0.0f, 0.0f, 0.0f, 0.0f, 2.0f, 0.0f, 2.0f, 2.0f };
+			float fireVertices[] = { -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f };
 			glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, fireVertices);
 			glEnableVertexAttribArray(program.positionAttribute);
 
-			float fireTexCoords[] = { 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f };
+			float fireTexCoords[] = { 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f };
 			glVertexAttribPointer(program.texCoordAttribute, 2, GL_FLOAT, false, 0, fireTexCoords);
 			glEnableVertexAttribArray(program.texCoordAttribute);
 
@@ -91,13 +94,15 @@ int main(int argc, char *argv[])
 			glDisableVertexAttribArray(program.positionAttribute);
 			glDisableVertexAttribArray(program.texCoordAttribute);
 
+			modelMatrix.identity();
+			modelMatrix.Translate(0.75f, -0.5f, 0.0f);
 			program.setModelMatrix(modelMatrix);
 
-			float ringVertices[] = { -1.0f, -1.0f, -3.0f, -1.0f, -3.0f, -3.0f, -3.0f, -3.0f, -1.0f, -3.0f, -1.0f, -1.0f };
+			float ringVertices[] = { -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f };
 			glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, ringVertices);
 			glEnableVertexAttribArray(program.positionAttribute);
 
-			float ringTexVertices[] = { 0.75f, 0.75f, -0.75f, 0.75f, -0.75f, -0.75f, -0.75f, -0.75f, 0.75f, -0.75f, 0.75f, 0.75f };
+			float ringTexVertices[] = { 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f };
 			glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, ringTexVertices);
 			glEnableVertexAttribArray(program.texCoordAttribute);
 			
@@ -106,13 +111,15 @@ int main(int argc, char *argv[])
 			glDisableVertexAttribArray(program.positionAttribute);
 			glDisableVertexAttribArray(program.texCoordAttribute);
 
+			modelMatrix.identity();
+			modelMatrix.Translate(-1.5f, -0.5f, 0.0f);
 			program.setModelMatrix(modelMatrix);
 
-			float sunVertices[] = { 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f };
+			float sunVertices[] = { -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f };
 			glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, sunVertices);
 			glEnableVertexAttribArray(program.positionAttribute);
 
-			float sunTexVertices[] = { 0.5f, 0.5f, -0.5f, 0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f };
+			float sunTexVertices[] = { 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f };
 			glVertexAttribPointer(program.positionAttribute, 2, GL_FLOAT, false, 0, sunTexVertices);
 			glEnableVertexAttribArray(program.texCoordAttribute);
 
@@ -127,3 +134,4 @@ int main(int argc, char *argv[])
 	SDL_Quit();
 	return 0;
 }
+
