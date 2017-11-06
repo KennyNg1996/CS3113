@@ -390,7 +390,7 @@ int main(int argc, char *argv[])
 	GLuint textTexture = LoadTexture(RESOURCE_FOLDER"font1.png");
 
 
-	//usethe full sprite images for the entities
+	//use the full sprite images for the entities
 	SheetSprite playerSprite(playerSheetSprite, 0.0f, 0.0f, 1.0f, 1.0f, 0.3f);
 	SheetSprite tile(tileSprite, 0.0f, 0.0f, 1.0f, 1.0f, 0.3f);
 	SheetSprite tile2(tile2Sprite, 0.0f, 0.0f, 1.0f, 1.0f, 0.3f);
