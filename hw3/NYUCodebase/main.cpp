@@ -22,6 +22,7 @@ SPACEBAR TO SHOOT
 #include <assert.h>
 #include "ShaderProgram.h"
 #include "Matrix.h"
+#include <SDL_mixer.h>
 #include <vector>
 
 #ifdef _WINDOWS
@@ -217,6 +218,10 @@ void renderGameLevel(Matrix& model, ShaderProgram& program, Entity& player, std:
 	}
 }
 
+Mix_Music *music;
+Mix_Chunk *fireSound;
+Mix_Chunk *collisionSound;
+
 //update positions of the invaders and check for any collisions between entities
 void update(Entity& player, std::vector<Entity>& invaders, Entity& greenLaser, std::vector<Entity>& redLasers, float elapsed)
 {
@@ -234,7 +239,10 @@ void update(Entity& player, std::vector<Entity>& invaders, Entity& greenLaser, s
 			redLaser.alive = false;
 		//check for collision between all red lasers and player; end game if player is hit
 		if (redLaser.alive && checkCollision(player, redLaser))
+		{
+			Mix_PlayChannel(-1, collisionSound, 0);
 			state = STATE_GAME_OVER;
+		}
 	}
 
 	//check if the invaders hit the edges
@@ -244,6 +252,7 @@ void update(Entity& player, std::vector<Entity>& invaders, Entity& greenLaser, s
 		//check if green laser collided with any invaders
 		if (invader.alive && greenLaser.alive && checkCollision(greenLaser, invader))
 		{
+			Mix_PlayChannel(-1, collisionSound, 0);
 			invader.alive = false;
 			greenLaser.alive = false;
 			invadersAlive --;
@@ -258,6 +267,7 @@ void update(Entity& player, std::vector<Entity>& invaders, Entity& greenLaser, s
 				//invaders can shoot multiple bullets to increase difficulty at end
 				if (!redLasers[redLaserIndex].alive)
 				{
+					Mix_PlayChannel(-1, fireSound, 0);
 					redLasers[redLaserIndex].alive = true;
 					redLasers[redLaserIndex].x = invader.x;
 					redLasers[redLaserIndex].y = invader.y - invader.sprite.height / 2;
@@ -321,6 +331,7 @@ void processInput(Entity& player, Entity& greenLaser, float elapsed)
 			greenLaser.alive = true;
 			greenLaser.x = player.x;
 			greenLaser.y = player.y + player.sprite.height / 2;
+			Mix_PlayChannel(-1, fireSound, 0);
 		}
 	}
 }
@@ -350,6 +361,11 @@ int main(int argc, char *argv[])
 #ifdef _WINDOWS
 	glewInit();
 #endif
+
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+	music = Mix_LoadMUS("gameMusic.mp3");
+	fireSound = Mix_LoadWAV("laser.wav");
+	collisionSound = Mix_LoadWAV("collision.wav");
 
 	//setting up before the loop
 	glViewport(0, 0, 640, 360);
@@ -422,7 +438,8 @@ int main(int argc, char *argv[])
 		{
 			case(STATE_MAIN_MENU) :
 				renderMainMenu(modelMatrix, program, textTexture);
-				if (keys[SDL_SCANCODE_RETURN])	{ state = STATE_GAME_LEVEL; }			//Enter key on the keyboard
+				if (keys[SDL_SCANCODE_RETURN])	
+				{ state = STATE_GAME_LEVEL; Mix_PlayMusic(music, -1); }			//Enter key on the keyboard
 				break;
 			case(STATE_GAME_LEVEL) :
 				renderGameLevel(modelMatrix, program, player, invaders, laser, redLasers);
@@ -436,10 +453,14 @@ int main(int argc, char *argv[])
 				renderWin(modelMatrix, program, textTexture);
 				break;
 		}
-
+		
 		SDL_GL_SwapWindow(displayWindow);
 		
 	}
+
+	Mix_FreeMusic(music);
+	Mix_FreeChunk(fireSound);
+	Mix_FreeChunk(collisionSound);
 
 	SDL_Quit();
 	return 0;
