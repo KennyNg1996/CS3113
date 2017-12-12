@@ -1,0 +1,45 @@
+﻿Build started 12/12/2017 5:20:47 PM.
+     1>Project "C:\Users\School\Documents\CS3113\Final Project\NYUCodebase\NYUCodebase.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SDL2\include /IC:\SDL2_image\include /IC:\glew\include /IC:\SDL2_mixer\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _WINDOWS /D _MBCS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(43): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(69): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(177): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(192): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(195): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(197): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(200): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(202): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(301): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(301): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(303): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(306): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(306): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(308): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(337): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(339): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(341): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(416): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(586): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(588): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(591): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(593): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(598): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(603): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(609): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(611): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(614): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(616): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(621): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\school\documents\cs3113\final project\nyucodebase\main.cpp(626): warning C4305: 'argument' : truncation from 'double' to 'float'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\School\Documents\CS3113\Final Project\Debug\NYUCodebase.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SDL2_mixer\lib\x86 /LIBPATH:C:\SDL2\lib\x86 /LIBPATH:C:\SDL2_image\lib\x86 /LIBPATH:C:\glew\lib\Release\Win32 SDL2.lib SDL2_mixer.lib glew32.lib SDL2main.lib SDL2_image.lib OpenGL32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\School\Documents\CS3113\Final Project\Debug\NYUCodebase.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\School\Documents\CS3113\Final Project\Debug\NYUCodebase.lib" /MACHINE:X86 Debug\main.obj
+         Debug\Matrix.obj
+         Debug\ShaderProgram.obj
+         NYUCodebase.vcxproj -> C:\Users\School\Documents\CS3113\Final Project\Debug\NYUCodebase.exe
+     1>Done Building Project "C:\Users\School\Documents\CS3113\Final Project\NYUCodebase\NYUCodebase.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.37
